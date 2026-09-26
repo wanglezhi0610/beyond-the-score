@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ODIS weight sensitivity map</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">North Carolina public high schools</p>
+      <h1>ODIS weight sensitivity map</h1>
+      <p class="subtitle">Adjust the five domain weights to see how each school community's 0–100 stress score changes, where the largest shifts cluster, and which conclusions remain stable.</p>
+    </header>
+
+    <section class="controls" aria-label="Domain weights">
+      <div class="controls-heading">
+        <div>
+          <h2>Domain weights</h2>
+          <p>Changing one weight proportionally adjusts the other four. The total remains 100%.</p>
+        </div>
+        <button id="reset" type="button">Reset to equal weights</button>
+      </div>
+      <div id="weight-controls" class="weight-grid"></div>
+    </section>
+
+    <section class="summary" aria-live="polite">
+      <div><span id="mapped-count" class="metric"></span><span class="metric-label">mapped schools</span></div>
+      <div><span id="changed-five" class="metric"></span><span class="metric-label">changed by at least 5 score points</span></div>
+      <div><span id="median-shift" class="metric"></span><span class="metric-label">median absolute score change</span></div>
+    </section>
+
+    <section class="map-layout">
+      <div class="map-column">
+        <div class="map-toolbar">
+          <label for="color-mode">Map view</label>
+          <select id="color-mode">
+            <option value="stress">Current stress score</option>
+            <option value="change">Change from equal weights</option>
+            <option value="sensitivity">Weight sensitivity</option>
+          </select>
+          <div class="zoom-controls" aria-label="Map zoom">
+            <button id="zoom-out" type="button" aria-label="Zoom out">−</button>
+            <label for="zoom-slider">Zoom</label>
+            <input id="zoom-slider" type="range" min="1" max="8" step="0.1" value="1">
+            <button id="zoom-in" type="button" aria-label="Zoom in">+</button>
+            <button id="zoom-reset" type="button">Reset map</button>
+          </div>
+          <div id="legend" aria-label="Map legend"></div>
+        </div>
+        <div id="map" role="img" aria-label="Map of North Carolina school communities"></div>
+      </div>
+      <aside id="detail" aria-live="polite">
+        <h2>Select a school</h2>
+        <p>Click a school to compare its current Community Stress Score with the equal-weight reference and its sensitivity range.</p>
+      </aside>
+    </section>
+
+    <footer>
+      <p>The Community Stress Score is a 0–100 index of measured community conditions. Higher values indicate greater measured stress; the score is not a probability or a rating of school performance. Sensitivity uses 2,500 weight combinations with every domain constrained to 10%–40%.</p>
+    </footer>
+  </main>
+
+  <div id="tooltip" role="tooltip" hidden></div>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

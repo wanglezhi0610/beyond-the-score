@@ -1,0 +1,18 @@
+{
+  "schools_clustered": 600,
+  "schools_with_imputed_domains": 7,
+  "selected_k": 6,
+  "highest_silhouette_k": 4,
+  "highest_silhouette": 0.261,
+  "selected_k_silhouette": 0.2527,
+  "selected_k_mean_seed_ari": 0.9684,
+  "selected_k_minimum_cluster_size": 60,
+  "pca_two_component_variance_percent": 72.3,
+  "counties_with_complete_linc_context": 100,
+  "counties_flagged_for_resource_alignment_review": 13,
+  "supplemental_sources": [
+    "LiNC Education",
+    "LiNC Employment and Income"
+  ],
+  "interpretation_boundary": "Clusters describe recurring school-community stress profiles. LiNC metrics provide county context. Neither establishes causality or policy effectiveness."
+}
